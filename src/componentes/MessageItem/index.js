@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css';
+import styles from './styles.module.css';
 
 export default ({ data, user }) => {
   const [time, setTime] = useState('');
@@ -16,17 +16,17 @@ export default ({ data, user }) => {
 
   return (
     <div
-      className='MessageLine'
+      className={styles.line}
       style={{
         justifyContent: user.id === data.author ? 'flex-end' : 'flex-start',
       }}>
       <div
-        className='MessageItem'
+        className={styles.item}
         style={{
           backgroundColor: user.id === data.author ? '#DCF8C6' : '#FFF',
         }}>
-        <div className='messageText'>{data.body}</div>
-        <div className='messageDate'>{time}</div>
+        <div className={styles.text}>{data.body}</div>
+        <div className={styles.date}>{time}</div>
       </div>
     </div>
   );

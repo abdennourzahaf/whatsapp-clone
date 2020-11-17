@@ -1,10 +1,10 @@
-.chatWindow {
+.container {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.chatWindow--header {
+.header {
   height: 60px;
   border-bottom: 1px solid #ccc;
   display: flex;
@@ -12,12 +12,12 @@
   align-items: center;
 }
 
-.chatWindow--info {
+.info {
   display: flex;
   align-items: center;
 }
 
-.chatWindow--avatar {
+.avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -25,19 +25,13 @@
   margin-right: 15px;
 }
 
-.chatWindow--name {
+.name {
   font-size: 17;
   color: #000;
   user-select: none;
 }
 
-.chatWindow--headerbuttons {
-  display: flex;
-  align-items: center;
-  margin-right: 15px;
-}
-
-.chatWindow--btn {
+.btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -49,7 +43,7 @@
   transition: all ease 0.3s;
 }
 
-.chatWindow--body {
+.body {
   flex: 1;
   overflow-y: auto;
   background-color: #e5ddd5;
@@ -59,22 +53,22 @@
   padding: 20px 30px;
 }
 
-.chatWindow--footer {
+.footer {
   height: 62px;
   display: flex;
   align-items: center;
 }
 
-.chatWindow-pre {
+.pre {
   display: flex;
   margin: 0 15px;
 }
 
-.chatWindow-inputarea {
+.inputarea {
   flex: 1;
 }
 
-.chatWindow--input {
+.input {
   width: 100%;
   height: 40px;
   border: 0;
@@ -85,30 +79,42 @@
   font-size: 15px;
   color: #4a4a4a;
 }
-.chatWindow-pos {
+.pos {
   display: flex;
   margin: 0 15px;
 }
 
-.chatWindow--emojiarea {
+.emojiarea {
   height: 200px;
   overflow-y: hidden;
   transition: all ease 0.3s;
 }
 
-aside.emoji-picker-react {
+.emojiarea aside {
   width: auto !important;
-  background: none;
+  background: none !important;
+}
+
+.emojiarea aside div section ul::before {
+  background: none !important;
 }
 
 .emoji-picker-react .emoji-group:before {
   background: none !important;
 }
 
-.chatWindow--body::-webkit-scrollbar {
+.body::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-.chatWindow--body::-webkit-scrollbar-thumb {
+.body::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
+}
+@media only screen and (max-width: 768px) {
+  .pre {
+    margin: 0;
+  }
+  .pos {
+    margin: 0;
+  }
 }

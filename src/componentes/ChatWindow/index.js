@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import { IconButton, Tooltip } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 import EmojiPicker, { SKIN_TONE_NEUTRAL } from 'emoji-picker-react';
 import MessageItem from '../MessageItem';
-import './styles.css';
 import Api from '../../Api';
-import { IconButton, Tooltip } from '@material-ui/core';
+import styles from './styles.module.css';
 
 export default ({ user, data }) => {
   const body = useRef();
@@ -79,32 +79,33 @@ export default ({ user, data }) => {
   };
 
   return (
-    <div className='chatWindow'>
-      <div className='chatWindow--header'>
-        <div className='chatWindow--info'>
-          <img className='chatWindow--avatar' src={data.image} alt='avatar' />
-          <div className='chatWindow--name'>{data.title}</div>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.info}>
+          <img className={styles.avatar} src={data.image} alt='avatar' />
+          <div className={styles.name}>{data.title}</div>
         </div>
       </div>
-      <div ref={body} className='chatWindow--body'>
+      <div ref={body} className={styles.body}>
         {list.map((item, key) => (
           <MessageItem key={key} data={item} user={user} />
         ))}
       </div>
       <div
-        className='chatWindow--emojiarea'
+        className={styles.emojiarea}
         style={{ height: emojiOpen ? '200px' : '0px' }}>
         <EmojiPicker
           onEmojiClick={handleEmojiClick}
           disableSearchBar
           disableSkinTonePicker
           skinTone={SKIN_TONE_NEUTRAL}
+          style={{ width: 'auto', background: 'none' }}
         />
       </div>
-      <div className='chatWindow--footer'>
-        <div className='chatWindow-pre'>
+      <div className={styles.footer}>
+        <div className={styles.pre}>
           <div
-            className='chatWindow--btn'
+            className={styles.btn}
             onClick={handleCloseEmoji}
             style={{ width: emojiOpen ? 40 : 0 }}>
             <Tooltip title='Cloes'>
@@ -113,7 +114,7 @@ export default ({ user, data }) => {
               </IconButton>
             </Tooltip>
           </div>
-          <div className='chatWindow--btn' onClick={handleOpenEmoji}>
+          <div className={styles.btn} onClick={handleOpenEmoji}>
             <Tooltip title='Insert Emoji'>
               <IconButton>
                 <InsertEmoticonIcon
@@ -123,9 +124,9 @@ export default ({ user, data }) => {
             </Tooltip>
           </div>
         </div>
-        <div className='chatWindow-inputarea'>
+        <div className={styles.inputarea}>
           <input
-            className='chatWindow--input'
+            className={styles.input}
             type='text'
             placeholder='Send a message'
             value={text}
@@ -133,9 +134,9 @@ export default ({ user, data }) => {
             onKeyUp={handleInputKeyUp}
           />
         </div>
-        <div className='chatWindow-pos'>
+        <div className={styles.pos}>
           {text === '' && (
-            <div onClick={handleMicClick} className='chatWindow--btn'>
+            <div onClick={handleMicClick} className={styles.btn}>
               <Tooltip title='Send a voice message'>
                 <IconButton>
                   <MicIcon
@@ -146,7 +147,7 @@ export default ({ user, data }) => {
             </div>
           )}
           {text !== '' && (
-            <div onClick={handleSendClick} className='chatWindow--btn'>
+            <div onClick={handleSendClick} className={styles.btn}>
               <IconButton>
                 <SendIcon style={{ color: '#919191' }} />
               </IconButton>
