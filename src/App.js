@@ -35,13 +35,14 @@ function App() {
           <div className='header--info'>
             <img className='header--avatar' src={user.avatar} alt='avatar' />
             <span className='header--more'>
-              <IconButton aria-label='More'>
+              <IconButton
+                aria-label='More'
+                onClick={() => setSidebarIsOpen((pre) => !pre)}>
                 <ArrowForwardIosIcon
                   style={{
                     color: '#919191',
                     transform: sidebarIsOpen ? 'rotate(180deg)' : 'none',
                   }}
-                  onClick={() => setSidebarIsOpen((pre) => !pre)}
                 />
               </IconButton>
             </span>
